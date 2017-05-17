@@ -1,5 +1,7 @@
 ﻿//СКРИПТ ДЛЯ МОНТАЖА студийной погоды!!111!!1
 //temp = mask("Mask 1").maskPath;
+//Author  - Mikhail Sorokin
+
 var myProj = app.project;
 var ControllLayer = searchCompByName("POGODA_DATA").layer("CONTROLL");
 citys = ['Ivdel', 'Serov', 'Tavda', 'Tagil', 'Kamensk', 'Irbit', 'Krasnoufimsk', 'Verhotur'];
