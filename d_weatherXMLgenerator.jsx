@@ -1,5 +1,6 @@
 ﻿//Generator XML for Weather
 //Created by Perdolee
+//Author  - Mikhail Sorokin
 
 var myProj = app.project;
 //DayWeek
