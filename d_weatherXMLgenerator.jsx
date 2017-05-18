@@ -1,7 +1,10 @@
-﻿//Generator XML for Weather
+﻿/**
+* @@@BUILDINFO@@@ d_weatherXMLgenerator.jsx !Version! Wed May 17 2017 23:04:04 GMT+0500
+*/
+//Generator XML for Weather
 //Created by Perdolee
 //Author  - Mikhail Sorokin
-
+//hello World
 var myProj = app.project;
 //DayWeek
 var d = new Date();
