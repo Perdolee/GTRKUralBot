@@ -1,10 +1,46 @@
-﻿/**
-* @@@BUILDINFO@@@ d_weatherXMLgenerator.jsx !Version! Wed May 17 2017 23:04:04 GMT+0500
-*/
+﻿//~ Copyright 2017-2017 Mikhail Sorokin
+//~  Original sources are available at 
+
+//~  Licensed under the Apache License, Version 2.0 (the "License");
+//~  you may not use this file except in compliance with the License.
+//~  You may obtain a copy of the License at
+
+//~  http://www.apache.org/licenses/LICENSE-2.0
+
+//~  Unless required by applicable law or agreed to in writing, software
+//~  distributed under the License is distributed on an "AS IS" BASIS,
+//~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//~  See the License for the specific language governing permissions and
+//~  limitations under the License.
 //Generator XML for Weather
 //Created by Perdolee
 //Author  - Mikhail Sorokin
 //hello World
+
+//system.callSystem(winBrowserCmd + " " + URL);
+ 
+ //File("/F/Diplom/repo/GTRKUralBot/README.md").execute();
+
+/* JSON READER
+$.evalFile("/F/Diplom/repo/GTRKUralBot/lib/json2.js");
+
+    var myJSONFile = File("/F/Diplom/repo/GTRKUralBot/ignore/test.json");  
+    myJSONFile.open('r');  
+    var content = myJSONFile.read();  
+    myJSONFile.close(); 
+try{  
+    myJSON = JSON.parse(content);
+    alert (myJSON.lolk[0].text);
+} catch(e) {  
+    alert("Exception:" + e + "\nCould not run JSON.parse()");  
+}  
+  */  
+    
+    //$.evalFile("/F/Diplom/repo/GTRKUralBot/lib/urlRequest.jsx");
+    //webRequest ("GET", "https://ya.ru", "")
+    
+
+
 var myProj = app.project;
 //DayWeek
 var d = new Date();
@@ -357,7 +393,6 @@ function LoadFromXML (fromFile)
         PTempDay1.text =  myXML.Ekat_week1.temp;
         PTempDay2.text =  myXML.Ekat_week2.temp;
         PTempDay3.text =  myXML.Ekat_week3.temp;
-
         loadFile.close();
         //alert("Файл загружен: " + loadFile.fullName); 
         return 1;
@@ -419,6 +454,10 @@ function daysInMonth(month,year) {
         eval(D2_citys[i]+"Temp = 0");
         eval(D2_citys[i]+"Cloud = 0");    
      }
+}
+
+function convertXml2JSon(xmlTextik) {
+   
 }
 //alert (daysInMonth(3,2017));
 /*--------------------------------------------------FUNCTIONS-------------------------------------------------------*/
