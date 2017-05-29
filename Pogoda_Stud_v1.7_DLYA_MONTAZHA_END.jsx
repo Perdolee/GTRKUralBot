@@ -91,7 +91,10 @@ else
 var dateYear = dateTime.getYear()-100;
 var CurrentPath = ("/e/000_POGODA/000_GOTOVOE/watch/");
 var xmlPath = ("/f/000_POGODA/xml"); 
+var mode = 0;
 var Temp = (Folder (CurrentPath));
+$.evalFile(decodeURI(File($.fileName).parent)  + "/lib/loadMode.jsx");
+loadMode();
 
 var PCW = new Window ("palette", "Управление погодой", undefined, {closeButton: false}); 
 PCW.alignChildren = "left";
@@ -233,6 +236,9 @@ ButtonsGroup2.add ("statictext", undefined, "Путь:");
 var PathButton = ButtonsGroup2.add ("button", [-140,15,100,45], CurrentPath);
 ButtonsGroup2.add ("statictext", ["", "" , 10, "30"], "");
 var RenderButton = ButtonsGroup2.add ("button", [-300,15,-220,45], "Рендер");
+PCW.add ("panel", [0,0,400,3]);
+var BottonGroup3 = PCW.add ("group");
+var XmlButton = BottonGroup3.add ("button", [-300,15,100,45], "Загрузить XML");
 PCW.add ("panel", [0,0,400,3]);
 var BottonGroup = PCW.add ("group");
 var ApplyButton = BottonGroup.add ("button", [-200,0,100,30], "Применить");
@@ -401,6 +407,10 @@ Goroda1Layer.opacity.setValueAtKey(3, 100);
 alert ("Подвинуто!");
 }
 
+XmlButton.onClick = function () 
+{
+  LoadFromXML();
+}
 
 PathButton.onClick = function () 
 {
@@ -564,29 +574,41 @@ function searchCompByName (nameComp)
    }
 }
 
+function checkExist (CheckPath)
+{
+    var checkFile = File(CheckPath);
+    if (checkFile.exists)
+    {
+            return 1;
+    }
+    return 0;
+}
 
-function LoadFromXML (fromFile)
+function LoadFromXML ()
 {
     if (checkExist(xmlPath + "/" + dateDayToZavtra + dateMonth+dateYear+".xml"))
     {
         var loadFile = File(xmlPath + "/" + dateDayToZavtra + dateMonth+dateYear+".xml");
+        $.write ("Файл найден")
     }
     else 
     {
         var loadFile = File.openDialog("Выберете файл для загрузки","XML:*.xml", false);  
+        $.write ("Файл выбран")
     }
         loadFile.open('r', undefined, undefined);
         var loadRead = loadFile.read();
         var xmlString = loadRead.toString();  
         var myXML = new XML(xmlString);  
         myXML.toXMLString();  
-        
+        $.write ("Файл распарсен")
         CloudedSkyDrop.selection = parseInt(myXML.Ekat.cloud);
         TemperaturaDay.text = myXML.Ekat.tempDay;
         TemperaturaNight.text = myXML.Ekat.tempNight;
         Pressure.text = myXML.Ekat.pressure;
         Humidity.text = myXML.Ekat.Humidity;
-        WindSpeed.text = parseInt((myXML.Ekat.windMin+myXML.Ekat.windMax)/2);
+        midWind = (parseInt(myXML.Ekat.windMin)+parseInt(myXML.Ekat.windMax))/2
+        WindSpeed.text = parseInt(midWind);
         DayWeek.selection = parseInt(myXML.dayweek);
         
         for (var i=0; i<citys.length;i++)
@@ -594,6 +616,7 @@ function LoadFromXML (fromFile)
            eval ("Temperatura"+  citys[i] + ".text = myXML." + citys[i] + ".temp");
            eval ("CloudedSkyDrop"+  citys[i] + ".selection = parseInt(myXML." + citys[i] + ".cloud)");
        }
+        
         CloudedSkyDropDay1.selection = parseInt(myXML.Ekat_week1.cloud);
         CloudedSkyDropDay2.selection = parseInt(myXML.Ekat_week2.cloud);
         CloudedSkyDropDay3.selection = parseInt(myXML.Ekat_week3.cloud);
