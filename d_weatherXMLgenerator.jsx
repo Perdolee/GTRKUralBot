@@ -101,7 +101,7 @@ var windRotation = 0;
 var Humidity = 0;
 
 //gorodaMainVar
-citys = ['Ivdel', 'Serov', 'Tavda', 'Tagil', 'Kamensk', 'Irbit', 'Krasnouf', 'Verhot'];
+citys = ['Ivdel', 'Serov', 'Tavda', 'Tagil', 'Kamensk', 'Irbit', 'Krasnoufimsk', 'Verhotur'];
 citysRU = ['Ивдель', 'Серов', 'Тавда', 'Тагил', 'Каменск', 'Ирбит', 'Красноуфимск', 'Верхотурье'];
 
 for (var i=0; i<citys.length;i++)
@@ -440,10 +440,6 @@ function GrabDayWeekStatus ()
         }
 } 
 
-CloseButton.onClick = function () 
-{
-    PCW.hide();
-}
 
 function daysInMonth(month,year) {
     return new Date(year, month, 0).getDate();
@@ -456,9 +452,6 @@ function daysInMonth(month,year) {
      }
 }
 
-function convertXml2JSon(xmlTextik) {
-   
-}
 //alert (daysInMonth(3,2017));
 /*--------------------------------------------------FUNCTIONS-------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------------------------------*/
