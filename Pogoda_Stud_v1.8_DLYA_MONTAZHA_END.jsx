@@ -90,7 +90,7 @@ else
 }
 var dateYear = dateTime.getYear()-100;
 var CurrentPath = ("/e/000_POGODA/000_GOTOVOE/watch/");
-var xmlPath = ("/f/000_POGODA/xml"); 
+var xmlPath = ("/e/000_POGODA/xml"); 
 var mode = 0;
 var Temp = (Folder (CurrentPath));
 $.evalFile(decodeURI(File($.fileName).parent)  + "/lib/loadMode.jsx");
@@ -589,11 +589,12 @@ function LoadFromXML ()
     if (checkExist(xmlPath + "/" + dateDayToZavtra + dateMonth+dateYear+".xml"))
     {
         var loadFile = File(xmlPath + "/" + dateDayToZavtra + dateMonth+dateYear+".xml");
-        $.write ("Файл найден")
+        $.write ("Файл найден: " + xmlPath + "/" + dateDayToZavtra + dateMonth+dateYear+".xml")
     }
     else 
     {
-        var loadFile = File.openDialog("Выберете файл для загрузки","XML:*.xml", false);  
+        var loadFile = File.openDialog("Выберете файл для загрузки","XML:*.xml", false);
+        $.write ("Файл не найден: " + xmlPath + "/" + dateDayToZavtra + dateMonth+dateYear+".xml");
         $.write ("Файл выбран")
     }
         loadFile.open('r', undefined, undefined);
@@ -603,6 +604,9 @@ function LoadFromXML ()
         myXML.toXMLString();  
         $.write ("Файл распарсен")
         CloudedSkyDrop.selection = parseInt(myXML.Ekat.cloud);
+        if (parseInt(myXML.Ekat.cloud) == 6){CloudedSkyDrop.selection = 7;}
+        if (parseInt(myXML.Ekat.cloud) == 7){CloudedSkyDrop.selection = 6;}
+        if (parseInt(myXML.Ekat.cloud) == 8){CloudedSkyDrop.selection = 2;}
         TemperaturaDay.text = myXML.Ekat.tempDay;
         TemperaturaNight.text = myXML.Ekat.tempNight;
         Pressure.text = myXML.Ekat.pressure;
@@ -615,11 +619,25 @@ function LoadFromXML ()
        { 
            eval ("Temperatura"+  citys[i] + ".text = myXML." + citys[i] + ".temp");
            eval ("CloudedSkyDrop"+  citys[i] + ".selection = parseInt(myXML." + citys[i] + ".cloud)");
+           eval ("parseInt(myXML." + citys[i] + ".cloud) == 6){CloudedSkyDrop"+  citys[i] + ".selection = 7}")
+           eval ("parseInt(myXML." + citys[i] + ".cloud) == 7){CloudedSkyDrop"+  citys[i] + ".selection = 6}")
+           eval ("parseInt(myXML." + citys[i] + ".cloud) == 8){CloudedSkyDrop"+  citys[i] + ".selection = 2}")
+
+
        }
         
         CloudedSkyDropDay1.selection = parseInt(myXML.Ekat_week1.cloud);
         CloudedSkyDropDay2.selection = parseInt(myXML.Ekat_week2.cloud);
         CloudedSkyDropDay3.selection = parseInt(myXML.Ekat_week3.cloud);
+        if (parseInt(myXML.Ekat_week1.cloud) == 6){CloudedSkyDropDay1.selection = 7;}
+        if (parseInt(myXML.Ekat_week2.cloud) == 6){CloudedSkyDropDay2.selection = 7;}
+        if (parseInt(myXML.Ekat_week3.cloud) == 6){CloudedSkyDropDay3.selection = 7;}
+        if (parseInt(myXML.Ekat_week1.cloud) == 7){CloudedSkyDropDay1.selection = 6;}
+        if (parseInt(myXML.Ekat_week2.cloud) == 7){CloudedSkyDropDay2.selection = 6;}
+        if (parseInt(myXML.Ekat_week3.cloud) == 7){CloudedSkyDropDay3.selection = 6;}
+        if (parseInt(myXML.Ekat_week1.cloud) == 8){CloudedSkyDropDay1.selection = 2;}
+        if (parseInt(myXML.Ekat_week2.cloud) == 8){CloudedSkyDropDay2.selection = 2;}
+        if ((parseInt(myXML.Ekat_week3.cloud) == 8){CloudedSkyDropDay3.selection = 2;}
         TemperaturaDay1.text =  myXML.Ekat_week1.temp;
         TemperaturaDay2.text =  myXML.Ekat_week2.temp;
         TemperaturaDay3.text =  myXML.Ekat_week3.temp;

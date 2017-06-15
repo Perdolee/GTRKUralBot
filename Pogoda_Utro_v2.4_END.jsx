@@ -141,7 +141,7 @@ else
 
 var dateYear = dateTime.getYear()-100;
 var CurrentPath = ("/e/000_POGODA/000_GOTOVOE/watch/");
-var xmlPath = ("/f/000_POGODA/xml"); 
+var xmlPath = ("/e/000_POGODA/xml"); 
 var mode = 0;
 var Temp = (Folder (CurrentPath));
 $.evalFile(decodeURI(File($.fileName).parent)  + "/lib/loadMode.jsx");
@@ -280,7 +280,7 @@ ButtonsGroup3.add ("statictext", ["", "" , 70, "30"], "");
 
 PCW.add ("panel", [0,0,400,3]);
 var BottonGroup4 = PCW.add ("group");
-var XmlButton = BottonGroup4.add ("button", [-300,15,100,45], "Загрузить XML");
+var XmlButton = BottonGroup4.add ("button", [-300,15,92,45], "Загрузить XML");
 
 PCW.add ("panel", [0,0,400,3]);
 var BottonGroup = PCW.add ("group");
