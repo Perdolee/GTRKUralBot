@@ -637,7 +637,7 @@ function LoadFromXML ()
         if (parseInt(myXML.Ekat_week3.cloud) == 7){CloudedSkyDropDay3.selection = 6;}
         if (parseInt(myXML.Ekat_week1.cloud) == 8){CloudedSkyDropDay1.selection = 2;}
         if (parseInt(myXML.Ekat_week2.cloud) == 8){CloudedSkyDropDay2.selection = 2;}
-        if ((parseInt(myXML.Ekat_week3.cloud) == 8){CloudedSkyDropDay3.selection = 2;}
+        if (parseInt(myXML.Ekat_week3.cloud) == 8){CloudedSkyDropDay3.selection = 2;}
         TemperaturaDay1.text =  myXML.Ekat_week1.temp;
         TemperaturaDay2.text =  myXML.Ekat_week2.temp;
         TemperaturaDay3.text =  myXML.Ekat_week3.temp;
