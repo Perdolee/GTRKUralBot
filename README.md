@@ -1,3 +1,1 @@
-# GTRKUralBot
-
-My project for VGTRK URAL.
+# gtrk_ae_scripts
